@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:meetup_demo_1/model/Cart.dart';
 import 'package:meetup_demo_1/state_demo_2.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(
+      ChangeNotifierProvider(
+        builder: (context) => Cart(),
+        child: MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -36,7 +43,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Demo 1"),),
+      appBar: AppBar(
+        title: Text("Demo 1"),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -53,11 +62,15 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(child: Icon(Icons.keyboard_arrow_right), onPressed: () => _gotoDemo2(),),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.keyboard_arrow_right),
+        onPressed: () => _gotoDemo2(),
+      ),
     );
   }
 
   void _gotoDemo2() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => StateDemo2()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => StateDemo2()));
   }
 }
